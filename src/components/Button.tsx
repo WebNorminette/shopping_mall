@@ -1,14 +1,16 @@
-import { palette } from "@styles/palette";
 import React from "react";
 import { styled } from "styled-components";
+import { palette } from "@styles/palette";
 
 type ButtonProps = {
   content: string;
   type: string;
+  onClick: any;
 };
 
-const Button = ({ content, type }: ButtonProps): React.ReactElement => {
-  return <div></div>;
+const Button = ({ content, type = "black", onClick }: ButtonProps): React.ReactElement => {
+  const backgroundColor = type;
+  return <StSubscribeButton onClick={onClick}>{content}</StSubscribeButton>;
 };
 
 const StSubscribeButton = styled.div`

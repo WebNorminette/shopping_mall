@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { styled } from "styled-components";
 
-import { palette } from "../styles/palette";
-import { ReactComponent as InstargramIcon } from "../assets/svg/instagramIcon.svg";
+import { ReactComponent as InstargramIcon } from "@assets/svg/instagramIcon.svg";
+import { palette } from "@styles/palette";
 
 const ICON_SIZE = 12;
 const Footer: React.FC = () => {
