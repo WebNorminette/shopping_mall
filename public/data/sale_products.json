@@ -1,0 +1,5 @@
+[
+  { "id": 1234, "name": "[SALE]T-shirt", "price": "₩50,000" },
+  { "id": 12345, "name": "[SALE]Pants", "price": "₩20,000" },
+  { "id": 123451, "name": "[SALE]Shoes", "price": "₩30,000" }
+]
