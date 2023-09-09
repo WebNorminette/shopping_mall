@@ -1,26 +1,51 @@
-import React from "react";
 import { styled } from "styled-components";
 import { palette } from "../styles/palette";
 
-type ButtonProps = {
+interface ButtonProps {
   content: string;
-  type: string;
-  onClick: any;
+  type?: string;
+  onClick?: any;
+  disabled?: boolean;
+}
+
+export const BlackButton = ({ content, onClick, disabled = false }: ButtonProps) => {
+  return (
+    <StBlackButton onClick={onClick} disabled={disabled}>
+      {content}
+    </StBlackButton>
+  );
 };
 
-const Button = ({ content, type = "black", onClick }: ButtonProps): React.ReactElement => {
-  const backgroundColor = type;
-  return <StSubscribeButton onClick={onClick}>{content}</StSubscribeButton>;
+export const WhiteButton = ({ content, onClick, disabled = false }: ButtonProps) => {
+  return (
+    <StWhiteButton onClick={onClick} disabled={disabled}>
+      {content}
+    </StWhiteButton>
+  );
 };
 
-const StSubscribeButton = styled.div`
+const StBlackButton = styled.button`
+  display: flex;
+  justify-content: center;
   width: 100%;
-  padding: 0.5rem 0;
+  padding: 0.7rem 0;
   margin-top: 0.3rem;
-  background-color: ${palette.black};
-  color: ${palette.white};
+  border: 1px solid ${(props) => (props.disabled ? palette.darkGray : palette.black)};
+  background-color: ${(props) => (props.disabled ? palette.lightGray : palette.black)};
+  color: ${(props) => (props.disabled ? palette.darkGray : palette.white)};
   font-size: 0.5rem;
   font-weight: 600;
+  cursor: pointer;
+  &:hover {
+    background-color: ${palette.darkGray};
+    color: ${palette.white};
+    border: 1px solid ${palette.darkGray};
+  }
 `;
 
-export default Button;
+const StWhiteButton = styled(StBlackButton)`
+  border: 1px solid ${(props) => (props.disabled ? palette.darkGray : palette.black)};
+  background-color: ${(props) => (props.disabled ? palette.lightGray : palette.white)};
+  color: ${(props) => (props.disabled ? palette.darkGray : palette.black)};
+  border: 1px solid ${palette.black};
+`;
