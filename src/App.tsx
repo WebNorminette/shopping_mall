@@ -4,6 +4,10 @@ import Products from './pages/Products';
 import NotFound from './pages/NotFound';
 import Root from './pages/Root';
 import ProductDetail from './pages/ProductDetail';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+
+const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
@@ -20,5 +24,10 @@ const router = createBrowserRouter([
 ]);
 
 export default function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+      <ReactQueryDevtools initialIsOpen={true} />
+    </QueryClientProvider>
+  );
 }
