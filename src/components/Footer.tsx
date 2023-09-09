@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { styled } from "styled-components";
 
-import { palette } from "../styles/palette";
 import { ReactComponent as InstargramIcon } from "../assets/svg/instagramIcon.svg";
+import { palette } from "../styles/palette";
 
 const ICON_SIZE = 12;
 const Footer: React.FC = () => {
@@ -33,7 +33,7 @@ const Footer: React.FC = () => {
           <StFooterButtonItem>chapters</StFooterButtonItem>
           <StFooterButtonItem>country</StFooterButtonItem>
         </StRow>
-        <StSmallName>ⓒ 2023 stussy </StSmallName>
+        <StSmallName>ⓒ 2023 stussy</StSmallName>
       </StButtonContainer>
       <StBottomText>
         코리아트라이브 유한회사 | 대표 | 사업자등록번호 | 서울특별시 주소주소주소
