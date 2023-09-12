@@ -3,21 +3,22 @@ import { styled } from "styled-components";
 
 import { ReactComponent as InstargramIcon } from "../assets/svg/instagramIcon.svg";
 import { palette } from "../styles/palette";
+import { BlackButton } from "./Button";
 
 const ICON_SIZE = 12;
 const Footer: React.FC = () => {
   const [email, setEmail] = useState<string>("");
+
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  };
+
   return (
     <StFooterWrapper>
       <StNewsLetterContainer>
         <StTitle>newsletter</StTitle>
-        <StTextInput
-          name="email"
-          placeholder="이메일"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <StSubscribeButton>구독하기</StSubscribeButton>
+        <StTextInput name="email" placeholder="이메일" value={email} onChange={onChange} />
+        <BlackButton content="구독하기" />
       </StNewsLetterContainer>
       <StButtonContainer>
         <StRow>
@@ -25,7 +26,8 @@ const Footer: React.FC = () => {
           <StFooterButtonItem>account</StFooterButtonItem>
           <StFooterButtonItem>legal</StFooterButtonItem>
         </StRow>
-        <InstargramIcon width={ICON_SIZE} height={ICON_SIZE} />
+
+        <StInstarIcon width={ICON_SIZE} height={ICON_SIZE} />
       </StButtonContainer>
       <StButtonContainer>
         <StRow>
@@ -36,7 +38,8 @@ const Footer: React.FC = () => {
         <StSmallName>ⓒ 2023 stussy</StSmallName>
       </StButtonContainer>
       <StBottomText>
-        코리아트라이브 유한회사 | 대표 | 사업자등록번호 | 서울특별시 주소주소주소
+        코리아트라이브 유한회사 | 대표 BAIK KYUHEE | 사업자등록번호 561-87-00715 | 서울특별시 강남구
+        대치동 942 해성빌딩 | 통신판매신고번호 제 2018 - 서울서초 - 0860 호 [사업자정보]
       </StBottomText>
     </StFooterWrapper>
   );
@@ -54,12 +57,15 @@ const StFooterWrapper = styled.div`
 `;
 
 const StNewsLetterContainer = styled.div`
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: left;
   padding: 0.5rem 1rem;
   margin-top: 1rem;
   border-top: 0.5px solid ${palette.lightGray};
+  @media screen and (max-width: 700px) {
+    display: flex;
+  }
 `;
 const StTitle = styled.div`
   padding-top: 0.3rem;
@@ -75,14 +81,10 @@ const StTextInput = styled.input`
   outline: none;
   border-bottom: 0.5px solid ${palette.lightGray};
 `;
-const StSubscribeButton = styled.div`
-  width: 100%;
-  padding: 0.5rem 0;
-  margin-top: 0.3rem;
-  background-color: ${palette.black};
-  color: ${palette.white};
-  font-size: 0.5rem;
-  font-weight: 600;
+const StInstarIcon = styled(InstargramIcon)`
+  @media screen and (max-width: 700px) {
+    display: none;
+  }
 `;
 
 const StButtonContainer = styled(StRow)`
@@ -100,6 +102,10 @@ const StFooterButtonItem = styled.div`
   font-size: 0.725rem;
   font-weight: 600;
   text-transform: uppercase;
+  cursor: pointer;
+  @media screen and (max-width: 700px) {
+    min-width: 7rem;
+  }
 `;
 
 const StSmallName = styled.div`
@@ -115,6 +121,8 @@ const StBottomText = styled.div`
   padding: 0.5rem;
   border-top: 0.5px solid ${palette.lightGray};
   font-size: 0.5rem;
+  text-align: center;
+  box-sizing: border-box;
 `;
 
 export default Footer;
