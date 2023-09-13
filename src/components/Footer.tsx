@@ -1,12 +1,15 @@
-import { useState } from "react";
+import React, { Ref, useState } from "react";
 import { styled } from "styled-components";
 
 import { ReactComponent as InstargramIcon } from "../assets/svg/instagramIcon.svg";
 import { palette } from "../styles/palette";
 import { BlackButton } from "./Button";
+import { useNavigate } from "react-router-dom";
 
 const ICON_SIZE = 12;
-const Footer: React.FC = () => {
+
+const Footer = React.forwardRef((props, ref: Ref<HTMLDivElement>) => {
+  const navigation = useNavigate();
   const [email, setEmail] = useState<string>("");
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -14,7 +17,7 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <StFooterWrapper>
+    <StFooterWrapper ref={ref}>
       <StNewsLetterContainer>
         <StTitle>newsletter</StTitle>
         <StTextInput name="email" placeholder="이메일" value={email} onChange={onChange} />
@@ -23,7 +26,7 @@ const Footer: React.FC = () => {
       <StButtonContainer>
         <StRow>
           <StFooterButtonItem>contact</StFooterButtonItem>
-          <StFooterButtonItem>account</StFooterButtonItem>
+          <StFooterButtonItem onClick={() => navigation("/login")}>account</StFooterButtonItem>
           <StFooterButtonItem>legal</StFooterButtonItem>
         </StRow>
 
@@ -43,7 +46,7 @@ const Footer: React.FC = () => {
       </StBottomText>
     </StFooterWrapper>
   );
-};
+});
 
 const StRow = styled.div`
   display: flex;
