@@ -1,0 +1,60 @@
+.input {
+  display: none;
+}
+
+.openModalIcon {
+  cursor: pointer;
+  display: inline-block;
+}
+
+.modalContainer {
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  transition: all 0.3s;
+}
+
+.input:checked + .openModalIcon + .modalContainer {
+  opacity: 1;
+  visibility: visible;
+}
+
+.input:checked + .openModalIcon + .modalContainer .modalContent {
+  right: 0;
+}
+
+.exitButton {
+  cursor: pointer;
+  position: absolute;
+  top: 1.5em;
+  right: 1.5em;
+  padding: 10px;
+  z-index: 1;
+  background: url('../../assets/svg/cancel.svg') 0 0 no-repeat;
+}
+
+.modalContent {
+  position: absolute;
+  top: 0;
+  right: -300vw;
+  width: 67%;
+  height: 100%;
+  background-color: #fff;
+  z-index: 2;
+  transition: all 0.3s ease-in-out;
+}
+
+.backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
