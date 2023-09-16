@@ -1,0 +1,106 @@
+.headerWrapper {
+  position: fixed;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  padding: 0 var(--lgPadding);
+  background-color: var(--mainColor);
+  color: var(--textColor);
+  border-bottom: 1px solid var(--greyColor);
+  z-index: 100;
+}
+
+.navButton {
+  cursor: pointer;
+  background-color: transparent;
+  color: var(--textColor);
+  visibility: hidden;
+  opacity: 0;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 0.5em;
+}
+
+.backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media only screen and (max-width: 1024px) {
+  .navButton {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .accordionModal {
+    position: fixed;
+    left: 0;
+    top: -100vh;
+    height: calc(100vh - 60px);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--mainColor);
+    transition: 0.2s;
+    z-index: 4;
+  }
+
+  .accordionModal.active {
+    top: 60px;
+  }
+}
+
+.spacer {
+  height: 60px;
+}
+
+.searchModal {
+  position: fixed;
+  top: 60px;
+  right: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 48px;
+  background-color: #fff;
+  z-index: 2;
+  padding: var(--lgPadding);
+  gap: 1em;
+  opacity: 0;
+}
+
+.searchModal.active {
+  opacity: 1;
+}
+
+.searchModal input {
+  width: 90%;
+  border: none;
+  font-weight: 600;
+  font-size: 1.4em;
+}
+.searchModal input:focus {
+  outline: none;
+}
+
+.searchModal input::placeholder {
+  font-size: 12px;
+}
