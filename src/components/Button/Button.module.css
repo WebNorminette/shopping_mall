@@ -1,0 +1,43 @@
+:root {
+  --white: "#FFFFFF";
+  --black: "#000000";
+  --lightGray: "#e5e5e5";
+  --darkGray: "#7B7B7B";
+  box-sizing: content-box;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 0.8rem 0;
+  margin-top: 0.3rem;
+  cursor: pointer;
+}
+
+.black {
+  background-color: #000;
+  color: #fff;
+  border: 1px solid var(--black);
+}
+
+.white {
+  background-color: var(--white);
+  color: var(--black);
+  border: 1px solid #000;
+}
+
+.useHover {
+  &:hover {
+    background-color: #7b7b7b;
+    color: white;
+    border: 1px solid #7b7b7b;
+  }
+}
+
+.disabled {
+  cursor: auto;
+  border: 1px solid rgb(117 117 117);
+  background-color: rgb(229 229 229);
+  color: rgb(117 117 117);
+}

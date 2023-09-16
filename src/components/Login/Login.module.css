@@ -1,0 +1,84 @@
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100vw;
+  padding: 2rem 9rem;
+  box-sizing: border-box;
+  gap: 5rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.iconBox {
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.iconBox :first-child {
+  width: 2.5em;
+}
+
+.iconBox :nth-child(2) {
+  width: 2.3em;
+}
+
+.title {
+  padding: 4rem 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.inputBox {
+  position: relative;
+  padding: 1rem 0;
+  cursor: pointer;
+}
+
+.input {
+  display: block;
+  width: 100%;
+  outline: none;
+  border: none;
+  border-bottom: 0.7px solid #000;
+}
+
+.label {
+  position: absolute;
+  top: 10px;
+  pointer-events: none;
+  transition: 0.3s ease all;
+  color: #ddd;
+}
+
+.input:focus + .label {
+  top: -0.7rem;
+  color: #000;
+}
+
+@media screen and (max-width: 1000px) {
+  .wrapper {
+    padding: 2rem 5rem;
+  }
+}
+@media screen and (max-width: 900px) {
+  .wrapper {
+    padding: 2rem 3rem;
+  }
+}
+@media screen and (max-width: 800px) {
+  .wrapper {
+    padding: 1rem 2rem 3rem;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .title {
+    padding: 2rem 0;
+  }
+}

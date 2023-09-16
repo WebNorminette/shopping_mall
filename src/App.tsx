@@ -3,7 +3,7 @@ import Home from "./pages/Home";
 import Products from "./pages/Products";
 import NotFound from "./pages/NotFound";
 import Root from "./pages/Root";
-import Login from "./components/Login";
+import Login from "./pages/Login";
 import ProductDetail from "./pages/ProductDetail";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";

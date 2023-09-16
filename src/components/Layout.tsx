@@ -1,7 +1,6 @@
 import React, { useLayoutEffect, useRef, useState } from "react";
 import Navbar from "./Navbar";
-import Footer from "./Footer";
-import { styled } from "styled-components";
+import Footer from "./Footer/Footer";
 
 export default function Layout({ children }: any) {
   const targetRef = useRef<HTMLDivElement>(null);
@@ -16,12 +15,8 @@ export default function Layout({ children }: any) {
   return (
     <div>
       <Navbar />
-      <StChildrenWrapper dimensions={dimensions}>{children}</StChildrenWrapper>
+      <div style={{ minHeight: `calc(100vh - ${dimensions}px)` }}>{children}</div>
       <Footer ref={targetRef} />
     </div>
   );
 }
-
-const StChildrenWrapper = styled.div<{ dimensions: number }>`
-  min-height: calc(100vh - ${(props) => props.dimensions}px);
-`;
