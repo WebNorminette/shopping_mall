@@ -1,0 +1,7 @@
+.section {
+  padding: var(--lgPadding);
+}
+
+.image {
+  width: 100%;
+}
