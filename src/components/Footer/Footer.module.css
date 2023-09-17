@@ -1,0 +1,77 @@
+.row {
+  display: flex;
+  flex-direction: row;
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.newsLetterContainer {
+  display: none;
+  flex-direction: column;
+  justify-content: left;
+  padding: 0.7rem var(--lgPadding);
+  margin-top: var(--lgPadding);
+  border-top: 0.5px solid var(--greyColor);
+}
+
+.title {
+  padding-top: 0.3rem;
+  font-size: 0.6rem;
+  font-weight: 500;
+  text-align: left;
+  text-transform: uppercase;
+}
+.input {
+  padding: var(--smPadding) 0;
+  font-size: 0.5rem;
+  border: none;
+  outline: none;
+  border-bottom: 0.5px solid var(--greyColor);
+}
+.itemContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 0.5px solid var(--greyColor);
+  padding: 0 var(--lgPadding);
+}
+
+.itemBox {
+  display: flex;
+  justify-content: flex-start;
+  min-width: 10rem;
+  padding: 0.8rem 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.name {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+}
+.bottomText {
+  width: 100%;
+  padding: var(--smPadding);
+  border-top: 0.5px solid var(--greyColor);
+  font-size: 0.5rem;
+  text-align: center;
+}
+@media screen and (max-width: 700px) {
+  .newsLetterContainer {
+    display: flex;
+  }
+  .instaIcon {
+    display: hidden;
+  }
+  .itemBox {
+    min-width: 7rem;
+  }
+  .name {
+    display: hidden;
+  }
+}

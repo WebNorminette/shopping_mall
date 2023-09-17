@@ -1,20 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import './index.css';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import "./index.css";
+import App from "./App";
 
-import reportWebVitals from './reportWebVitals';
-import Home from './pages/Home/Home';
-import NotFound from './pages/NotFound';
-import AllProducts from './pages/AllProducts';
-import ProtectedRoute from './pages/ProtectedRoute';
-import NewProduct from './pages/NewProduct';
-import ProductDetail from './pages/ProductDetail';
+import reportWebVitals from "./reportWebVitals";
+import Home from "./pages/Home/Home";
+import NotFound from "./pages/NotFound";
+import AllProducts from "./pages/AllProducts";
+import ProtectedRoute from "./pages/ProtectedRoute";
+import NewProduct from "./pages/NewProduct";
+import ProductDetail from "./pages/ProductDetail";
+import Login from "./pages/Login";
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <App />,
     errorElement: (
       <App>
@@ -22,10 +23,10 @@ const router = createBrowserRouter([
       </App>
     ),
     children: [
-      { index: true, path: '/', element: <Home /> },
-      { path: '/products', element: <AllProducts /> },
+      { index: true, path: "/", element: <Home /> },
+      { path: "/products", element: <AllProducts /> },
       {
-        path: '/products/new',
+        path: "/products/new",
         element: (
           <ProtectedRoute requireAdmin>
             <NewProduct />
@@ -33,16 +34,18 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: '/products/:id',
+        path: "/products/:id",
         element: <ProductDetail />,
+      },
+      {
+        path: "/account",
+        element: <Login />,
       },
     ],
   },
 ]);
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
+const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(
   <React.StrictMode>
     <RouterProvider router={router} />
