@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar/Navbar";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { AuthContextProvider } from "./context/AuthContext";
 import { ReactNode } from "react";
+import Footer from "./components/Footer/Footer";
 
 interface AppProps {
   children?: ReactNode;
@@ -18,6 +19,7 @@ function App({ children }: AppProps) {
         <Navbar />
         {children}
         <Outlet />
+        <Footer />
       </AuthContextProvider>
       <ReactQueryDevtools />
     </QueryClientProvider>

@@ -31,7 +31,7 @@ const Footer = React.forwardRef((props, ref: Ref<HTMLDivElement>) => {
       <div className={styles.itemContainer}>
         <div className={styles.row}>
           <div className={styles.itemBox}>contact</div>
-          <div className={styles.itemBox} onClick={() => navigation("/login")}>
+          <div className={styles.itemBox} onClick={() => navigation("/account")}>
             account
           </div>
           <div className={styles.itemBox}>legal</div>
