@@ -1,28 +1,27 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import styles from './Navbar.module.css';
-import { ReactComponent as MenuIcon } from '../../assets/svg/menu.svg';
-import { ReactComponent as SearchIcon } from '../../assets/svg/search.svg';
-import { ReactComponent as LogoIcon } from '../../assets/svg/logo.svg';
-import { ReactComponent as CancelIcon } from '../../assets/svg/cancel.svg';
-import AccordionMenu from '../AccordionMenu/AccordionMenu';
-import Cart from '../Cart/Cart';
-import Modal from '../Modal/Modal';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import styles from "./Navbar.module.css";
+import { ReactComponent as MenuIcon } from "../../assets/svg/menu.svg";
+import { ReactComponent as SearchIcon } from "../../assets/svg/search.svg";
+import { ReactComponent as LogoIcon } from "../../assets/svg/logo.svg";
+import { ReactComponent as CancelIcon } from "../../assets/svg/cancel.svg";
+import AccordionMenu from "../accordionMenu/AccordionMenu";
+import Cart from "../modal/CartModal";
+import Modal from "../modal/Modal";
 
 const LOGO_SIZE = 56;
 
 export default function Navbar() {
-  const [isAccordionMenuOpen, setIsAccordionMenuOpen] =
-    useState<boolean>(false);
+  const [isAccordionMenuOpen, setIsAccordionMenuOpen] = useState<boolean>(false);
 
   const [isSearch, setIsSearch] = useState<boolean>(false);
 
   const showAccordionModal = () => {
     if (!isAccordionMenuOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     }
     if (isAccordionMenuOpen) {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     }
     setIsAccordionMenuOpen((prev) => !prev);
   };
@@ -58,17 +57,10 @@ export default function Navbar() {
 
       <nav className={`${styles.searchModal} ${isSearch && styles.active}`}>
         <SearchIcon />
-        <input
-          className={styles.searchModalInput}
-          placeholder="SEARCH FOR KEYWORDS"
-        />
+        <input className={styles.searchModalInput} placeholder="SEARCH FOR KEYWORDS" />
       </nav>
 
-      <nav
-        className={`${styles.accordionModal} ${
-          isAccordionMenuOpen && styles.active
-        }`}
-      >
+      <nav className={`${styles.accordionModal} ${isAccordionMenuOpen && styles.active}`}>
         <AccordionMenu />
       </nav>
 

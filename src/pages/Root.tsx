@@ -1,5 +1,5 @@
-import Footer from "../components/Footer/Footer";
-import Navbar from "../components/Navbar/Navbar";
+import Footer from "../components/common/Footer";
+import Navbar from "../components/common/Navbar";
 import { Outlet } from "react-router-dom";
 
 export default function Root() {
