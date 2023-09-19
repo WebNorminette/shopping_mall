@@ -2,7 +2,7 @@ import React, { Ref, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { ReactComponent as InstargramIcon } from "../../assets/svg/instagramIcon.svg";
-import Button from "../Button/Button";
+import Button from "./Button";
 import styles from "./Footer.module.css";
 
 const ICON_SIZE = 12;

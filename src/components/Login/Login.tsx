@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { ReactComponent as GoogleIcon } from "../../assets/svg/googleIcon.svg";
 import { ReactComponent as KaKaoIcon } from "../../assets/svg/kakaoIcon.svg";
-import Button from "../Button/Button";
-import WhiteSpace from "../WhiteSpace";
+import Button from "../common/Button";
+import WhiteSpace from "../common/WhiteSpace";
 
 import styles from "./Login.module.css";
 

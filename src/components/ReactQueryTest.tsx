@@ -1,6 +1,7 @@
-import { useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
+import { useMemo, useState } from "react";
+import { useInfiniteQuery } from "@tanstack/react-query";
+import ProductItem from "./productList/ProductItem";
+import { getProductListApi } from "../utils/shop";
 
 interface Product {
   id: number;
@@ -10,25 +11,25 @@ interface Product {
 
 export default function ReactQueryTest() {
   const [checked, setChecked] = useState<boolean>(false);
-  const {
-    isLoading,
-    error,
-    data: products,
-  } = useQuery(
-    ['products', checked],
-    async () => {
-      console.log('fetching..');
-      const response = await axios.get(
-        `data/${checked ? 'sale_' : ''}products.json`
-      );
-      return response.data;
-    },
+
+  const { isLoading, error, data, fetchNextPage, hasNextPage, remove, refetch } = useInfiniteQuery(
+    ["getProducList", checked],
+    ({ pageParam = 0 }) => getProductListApi(pageParam),
     {
-      // staleTime: 1000 * 60 * 5,
-      refetchOnWindowFocus: false,
-      // refetchOnMount: false,
+      getNextPageParam: (lastPage) => {
+        const { isLast } = lastPage;
+        if (!isLast) return undefined;
+
+        return lastPage.nextPage;
+      },
     }
   );
+
+  const products = useMemo(() => data?.pages.map((page) => page.result).flat(), [data]);
+
+  const getMoreProducts = () => {
+    if (hasNextPage) fetchNextPage();
+  };
 
   const handleChange = () => setChecked((prev) => !prev);
 
@@ -38,23 +39,22 @@ export default function ReactQueryTest() {
 
   return (
     <>
-      <input
-        id="checkbox"
-        type="checkbox"
-        checked={checked}
-        onChange={handleChange}
-      />
+      <input id="checkbox" type="checkbox" checked={checked} onChange={handleChange} />
       <label htmlFor="checkbox">Show Only Sale</label>
-      <ul>
-        {products?.length > 0 ? (
-          products.map((product: Product) => (
-            <li key={product.id}>
-              <article>
-                <h3>{product.name}</h3>
-                <p>{product.price}</p>
-              </article>
-            </li>
-          ))
+      <button onClick={getMoreProducts}>Get more...</button>
+      <ul
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(4, 1fr)",
+          width: "100%",
+          rowGap: "1rem",
+          columnGap: "1rem",
+          flexWrap: "wrap",
+          padding: "0 4rem",
+        }}
+      >
+        {!!products && products?.length > 0 ? (
+          products.map((product: Product) => <ProductItem key={product.id} product={product} />)
         ) : (
           <p>No products </p>
         )}
