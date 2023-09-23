@@ -1,0 +1,46 @@
+.container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.carouselWrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel {
+  display: flex;
+  width: 100%;
+}
+
+li {
+  flex: none;
+  object-fit: contain;
+}
+.carouselItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 10px 0 15px;
+  overflow: hidden;
+  border-right: 2px solid white;
+  border-left: 2px solid white;
+  transition: border 300ms;
+}
+.img {
+  flex-shrink: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.scrollTrack {
+  width: 98%;
+  position: absolute;
+  z-index: 99;
+  bottom: 3rem;
+  margin: 0 1%;
+}
