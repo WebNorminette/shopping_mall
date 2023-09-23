@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { RecoilRoot } from "recoil";
+
 import "./index.css";
 import App from "./App";
 
@@ -10,7 +12,7 @@ import NotFound from "./pages/NotFound";
 import AllProducts from "./pages/AllProducts";
 import ProtectedRoute from "./pages/ProtectedRoute";
 import NewProduct from "./pages/NewProduct";
-import ProductDetail from "./pages/ProductDetail";
+import ProductDetail from "./pages/productDetail/ProductDetail";
 import Login from "./pages/Login";
 
 const router = createBrowserRouter([
@@ -47,9 +49,11 @@ const router = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+  <RecoilRoot>
+    <React.StrictMode>
+      <RouterProvider router={router} />
+    </React.StrictMode>
+  </RecoilRoot>
 );
 
 reportWebVitals();
