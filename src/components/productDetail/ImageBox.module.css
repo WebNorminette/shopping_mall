@@ -1,0 +1,32 @@
+.wrapper {
+  display: flex;
+  flex: 1;
+  gap: 1rem;
+  flex-direction: column;
+}
+
+.imgItem {
+  display: flex;
+  flex: 1;
+  margin-bottom: 10;
+}
+
+@media screen and (max-width: 1000px) {
+  .wrapper {
+    flex-direction: row;
+    overflow-x: scroll;
+  }
+  .border {
+    width: 100%;
+  }
+  .colorContainer {
+    grid-template-columns: repeat(8, 1fr);
+    width: 50%;
+  }
+  .imgItem {
+    display: block;
+    width: 100%;
+    flex: 0;
+    margin-bottom: 10;
+  }
+}
